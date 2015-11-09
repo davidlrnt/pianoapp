@@ -21,6 +21,14 @@ if (canvas.getContext){
 		ctx.lineTo(divide,200);
 		divide += width/52;
 	}
+	var bkey = (width/52)/2
+	while (bkey < width) {
+		ctx.moveTo(bkey,0);
+		ctx.lineTo(bkey,100);
+		ctx.moveTo(bkey,100);
+		ctx.lineTo(bkey+width/52,100);	
+		bkey += width/52;
+	}
 	ctx.stroke();
 
 } else {
