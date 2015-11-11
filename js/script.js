@@ -19,19 +19,36 @@ if (canvas.getContext){
 	var height = canvas.height;
 	ctx.beginPath();
 	var divide = width/52
-	while (divide < width) {
-		ctx.moveTo(divide,0);
-		ctx.lineTo(divide,200);
+
+	var count = 0;
+
+	while (count<notes.length) {
+		if (/#/.test(notes[count])) {
+			// ctx.moveTo(divide-(width/52)/2,0);
+			// ctx.lineTo(divide-(width/52)/2,100);
+			// ctx.moveTo(divide-(width/52)/2,100);
+			// ctx.lineTo(divide+(width/52)/2,100);
+			// ctx.moveTo(divide+(width/52)/2,0);
+			// ctx.lineTo(divide+(width/52)/2,100);	
+			// divide/2 += width/52;
+			ctx.fillRect(divide-(width/52)/2,0,width/52,100);
+		}
+		// else {
+			ctx.moveTo(divide,0);
+			ctx.lineTo(divide,200);
+		// }
 		divide += width/52;
+		count++
 	}
-	var bkey = (width/52)/2
-	while (bkey < width) {
-		ctx.moveTo(bkey,0);
-		ctx.lineTo(bkey,100);
-		ctx.moveTo(bkey,100);
-		ctx.lineTo(bkey+width/52,100);	
-		bkey += width/52;
-	}
+	// var bkey = (width/52)/2
+
+	// while (bkey < width) {
+	// 	ctx.moveTo(bkey,0);
+	// 	ctx.lineTo(bkey,100);
+	// 	ctx.moveTo(bkey,100);
+	// 	ctx.lineTo(bkey+width/52,100);	
+	// 	bkey += width/52;
+	// }
 	ctx.stroke();
 
 } else {
