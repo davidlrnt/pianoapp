@@ -27,17 +27,22 @@ if (canvas.getContext){
   	var width = canvas.width;
 	var height = canvas.height;
 	ctx.beginPath();
-	var divide = width/52
+	var divide = 0;
 
 	var count = 0;
 	while (count<notes.length) {
 		if (/#/.test(notes[count])) {
-			ctx.fillRect(divide-(width/52)/2,0,width/52,100);
+			ctx.fillStyle="black";
+			ctx.fillRect(divide-((width/52)/2),0,width/52,100);
 		}
-		ctx.moveTo(divide,0);
-		ctx.lineTo(divide,200);
+		else {
+			ctx.fillStyle="#FF0000";
+			ctx.fillRect(divide,0,width/52,200);
+			divide += width/52;
+		}
+		// ctx.moveTo(divide,0);
+		// ctx.lineTo(divide,200);
 		new Note(notes[count]);
-		divide += width/52;
 		count++
 	}
 	ctx.stroke();
